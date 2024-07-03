@@ -22,12 +22,16 @@ pipeline {
                 sh(script: 'docker compose up -d')
             }
         }
-        
+
         stage('Run Tests') {
             steps {
-                // Run tests using pytest
-                sh(script: 'pytest ./tests/test_sample.py')
+                // Add /var/lib/jenkins/.local/bin to PATH
+                sh 'export PATH=$PATH:/var/lib/jenkins/.local/bin && pytest ./tests/test_sample.py'
             }
+            // steps {
+            //     // Run tests using pytest
+            //     sh(script: 'pytest ./tests/test_sample.py')
+            // }
             post {
                 success {
                     // Print a success message if tests pass
@@ -49,7 +53,7 @@ pipeline {
                 sh(script: 'docker run -p 6060:6060 --link db:postgres -d --name clair --platform linux/amd64 arminc/clair-local-scan:latest')
 
             }
-        }   
+        }
 
         stage('Run Clair Scan'){
             agent {label 'principal'}
