@@ -1,7 +1,9 @@
-version: '3'
 services:
   azure-vote-back:
-    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+    # Chip amd64
+    #image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+    # Chip arm64
+    image: redis:6.2
     container_name: azure-vote-back
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
@@ -11,6 +13,8 @@ services:
   azure-vote-front:
     build: ./azure-vote
     image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+    # Para emular la arquitectura amd64 en un sistema arm64
+    platform: linux/amd64
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
