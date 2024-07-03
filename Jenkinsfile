@@ -35,8 +35,6 @@ pipeline {
             steps {
                 // Add /var/lib/jenkins/.local/bin to PATH
                 sh 'export PATH=$PATH:/var/lib/jenkins/.local/bin'
-            }
-            steps {
                 // Run tests using pytest
                 sh(script: 'pytest ./tests/test_sample.py')
             }
