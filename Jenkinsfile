@@ -6,12 +6,7 @@ pipeline {
     stages {
         stage('Verify Branch') {
             steps {
-<<<<<<< HEAD
                 echo "$GIT_BRANCH :D"
-=======
-                // Print the current Git branch
-                echo "$GIT_BRANCH"
->>>>>>> 0c7873faf4ebb1108b4f9b2b954a90e46373200d
             }
         }
         stage('Docker Build') {
@@ -35,7 +30,7 @@ pipeline {
             //         '''
             //     }
             // }
-        
+
         stage('Run Tests') {
             steps {
                 // Run tests using pytest
