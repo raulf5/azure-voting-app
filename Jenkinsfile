@@ -34,10 +34,14 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Add /var/lib/jenkins/.local/bin to PATH
-                sh 'export PATH=$PATH:/var/lib/jenkins/.local/bin'
-                // Run tests using pytest
-                sh(script: 'pytest ./tests/test_sample.py')
+                sh 'export PATH=$PATH:/var/lib/jenkins/.local/bin && pytest ./tests/test_sample.py'
             }
+            // steps {
+            //     // Add /var/lib/jenkins/.local/bin to PATH
+            //     sh 'export PATH=$PATH:/var/lib/jenkins/.local/bin'
+            //     // Run tests using pytest
+            //     sh(script: 'pytest ./tests/test_sample.py')
+            // }
             post {
                 success {
                     // Print a success message if tests pass
