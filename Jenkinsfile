@@ -58,7 +58,7 @@ pipeline {
         stage('Run Clair Scan'){
             agent {label 'principal'}
             steps {
-                sh(script: '/Users/cesar/clair-scanner/clair-scanner --ip=192.168.68.107 cesarc95/jenkins-masterclass:20240624-222837')
+                sh(script: '/usr/local/bin/clair-scanner --ip=192.168.1.138 cesarc95/jenkins-masterclass:20240624-222837')
             }
         }
 
