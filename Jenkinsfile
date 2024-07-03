@@ -48,7 +48,7 @@ pipeline {
             echo "Runnning in $WORKSPACE"
             dir("$WORKSPACE/azure-vote") {
                script {
-                  docker.withRegistry('', 'dockerhub') {
+                  docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
                     def image = docker.build("rglepe/jenkins-masterclass:${new Date().format('yyyyMMdd-HHmmss')}")
                      image.push()
                   }
